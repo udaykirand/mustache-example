@@ -27,7 +27,9 @@ public class MustacheTest {
     private String executeTemplate(Mustache m, ToDo todo) throws IOException {
         StringWriter writer = new StringWriter();
         m.execute(writer, todo).flush();
-        return writer.toString();
+        String ret = writer.toString();
+        System.out.println("*********************"+ret);
+        return ret;
     }
 
     @Test
@@ -37,7 +39,7 @@ public class MustacheTest {
         Map<String, Object> context = new HashMap<>();
         context.put("todo", todo);
         System.out.println(executeTemplate(m, todo));
-        String expected = "<h2>Todo 1</h2>";
+        String expected = "Todo";
         assertThat(executeTemplate(m, todo)).contains(expected);
     }
 
